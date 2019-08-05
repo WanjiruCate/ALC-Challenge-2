@@ -33,6 +33,7 @@ dependencies {
     // For example, to use Firebase Authentication and Cloud Firestore
     implementation 'com.google.firebase:firebase-auth:18.1.0'
     implementation 'com.google.firebase:firebase-database:18.0.1'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
     // Getting a "Could not find" error? Make sure that you've added
     // Google's Maven repository to your root-level build.gradle file
@@ -40,3 +41,4 @@ dependencies {
 
 }
 apply plugin: 'com.google.gms.google-services'  // Google Play services Gradle plugin
+

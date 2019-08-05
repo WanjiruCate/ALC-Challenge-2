@@ -24,8 +24,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("traveldeals");
+        FirebaseUtil.openFirebaseReference("traveldeals");
+
+        firebaseDatabase =FirebaseUtil.firebaseDatabase;
+        databaseReference = FirebaseUtil.databaseReference;
 
         title = findViewById(R.id.txtTittle);
         price = findViewById(R.id.txtPrice);
