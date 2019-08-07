@@ -3,6 +3,7 @@ package com.shirucodes.travelmantics;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,7 +27,7 @@ public class DealActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FirebaseUtil.openFirebaseReference("traveldeals");
+        FirebaseUtil.openFirebaseReference("traveldeals", this);
 
         firebaseDatabase =FirebaseUtil.firebaseDatabase;
         databaseReference = FirebaseUtil.databaseReference;
