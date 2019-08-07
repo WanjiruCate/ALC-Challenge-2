@@ -3,6 +3,7 @@ package com.shirucodes.travelmantics;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,6 +33,12 @@ public class DealActivity extends AppCompatActivity {
         title = findViewById(R.id.txtTittle);
         price = findViewById(R.id.txtPrice);
         description = findViewById(R.id.txtDescription);
+
+        Intent intent = getIntent();
+        TravelDeal deal = (TravelDeal) intent.getSerializableExtra("Deal");
+        if (deal == null){
+
+        }
     }
 
     @Override

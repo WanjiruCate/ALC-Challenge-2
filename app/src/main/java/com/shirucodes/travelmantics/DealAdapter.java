@@ -1,6 +1,7 @@
 package com.shirucodes.travelmantics;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
 
 public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealViewHolder>{
     ArrayList<TravelDeal> deals;
@@ -91,7 +94,7 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealViewHolder
         return deals.size();
     }
 
-    public class DealViewHolder extends RecyclerView.ViewHolder {
+    public class DealViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
 
         TextView tv_title;
@@ -104,6 +107,7 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealViewHolder
             tv_title = (TextView) itemView.findViewById(R.id.title_tv);
             tv_description = (TextView) itemView.findViewById(R.id.description_tv);
             tv_price = (TextView) itemView.findViewById(R.id.price_tv);
+            itemView.setOnClickListener(this);
         }
 
         public void bind(TravelDeal deal) {
@@ -111,6 +115,18 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealViewHolder
             tv_title.setText(deal.getTitle());
             tv_description.setText(deal.getDescription());
             tv_price.setText(deal.getPrice());
+        }
+
+        @Override
+        public void onClick(View view) {
+             int position = getAdapterPosition();
+            Log.d("Click", String.valueOf(position));
+
+            TravelDeal selectedDeal = deals.get(position);
+            Intent intent = new Intent(view.getContext(), DealActivity.class);
+            intent.putExtra("Deal", selectedDeal);
+            view.getContext().startActivity(intent);
+
         }
     }
 }
